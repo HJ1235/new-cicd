@@ -1,0 +1,22 @@
+name: Artifact Example
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create artifact file
+        run: |
+          mkdir -p my_app
+          echo "Hello from GitHub Actions" > my_app/output.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-build-artifact
+          path: my_app/
