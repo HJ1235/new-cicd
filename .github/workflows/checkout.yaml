@@ -7,8 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: ls -al
+
       - uses: actions/checkout@v3
         with:
-          path: source
-      - run: ls -al source
-      - run: cat source/.github/workflows/checkout.yaml
+          fetch-depth: 3
+
+      - run: git log --pretty=oneline
